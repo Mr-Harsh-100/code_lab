@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Code Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Code Library</h1>
+            <div class="header-controls">
+                <button id="newTopicBtn">New Topic</button>
+                <button id="newSnippetBtn">New Snippet</button>
+                <button id="exportBtn">Export JSON</button>
+                <button id="importBtn">Import JSON</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <nav class="topics-sidebar">
+                <h2>Topics</h2>
+                <ul id="topicsList"></ul>
+            </nav>
+
+            <div class="content-area">
+                <div class="snippets-list-container">
+                    <h2 id="currentTopicTitle">Select a Topic</h2>
+                    <ul id="snippetsList"></ul>
+                </div>
+
+                <div class="code-viewer-container">
+                    <div class="code-viewer-header">
+                        <h3 id="snippetTitle">No snippet selected</h3>
+                        <div class="code-actions">
+                            <button id="editBtn">Edit</button>
+                            <button id="copyBtn">Copy</button>
+                            <button id="deleteBtn">Delete</button>
+                        </div>
+                    </div>
+                    <pre><code id="codeDisplay" class="language-python">Select a code snippet to view</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for new topic -->
+        <div id="topicModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Create New Topic</h2>
+                <input type="text" id="newTopicName" placeholder="Enter topic name">
+                <button id="saveTopicBtn">Save Topic</button>
+            </div>
+        </div>
+
+        <!-- Modal for topic update -->
+        <div id="topicModal_update" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Update Topic Name</h2>
+                <input type="text" id="UpdateTopicInput" placeholder="Enter new topic name">
+                <input type="hidden" id="UpdateTopic">
+                <button id="saveUpdatedTopicBtn">Update Topic</button>
+            </div>
+        </div>
+
+        <!-- Modal for new/edit snippet -->
+        <div id="snippetModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="snippetModalTitle">New Code Snippet</h2>
+                <input type="text" id="snippetName" placeholder="Snippet name">
+                <textarea id="snippetCode" placeholder="Enter your code here"></textarea>
+                <button id="saveSnippetBtn">Save Snippet</button>
+            </div>
+        </div>
+
+        <!-- Modal for file import -->
+        <div id="importModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Import JSON File</h2>
+                <input type="file" id="jsonFileInput" accept=".json">
+                <div class="import-options">
+                    <label>
+                        <input type="radio" name="importOption" value="merge" checked> Merge with existing data
+                    </label>
+                    <label>
+                        <input type="radio" name="importOption" value="replace"> Replace all data
+                    </label>
+                </div>
+                <button id="confirmImportBtn">Import</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
